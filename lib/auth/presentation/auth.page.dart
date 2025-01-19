@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:tech_task_clario/shared/widgets/buttons/primary_button.dart';
+import 'package:tech_task_clario/shared/widgets/text_fields/custom_text_form_field.dart';
 
 class AuthPage extends HookConsumerWidget {
   const AuthPage({super.key});
@@ -17,16 +19,13 @@ class AuthPage extends HookConsumerWidget {
         key: formKey,
         child: Column(
           children: [
-            TextFormField(
+            AppTextFormField(
               controller: emailController,
-              decoration: InputDecoration(
-                labelText: 'Email',
-              ),
+              labelText: 'Email',
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Please enter your email';
                 }
-                // Add your email validation logic here
                 return null;
               },
             ),
@@ -42,13 +41,11 @@ class AuthPage extends HookConsumerWidget {
                 return null;
               },
             ),
-            ElevatedButton(
+            PrimaryButton(
               onPressed: () {
-                if (formKey.currentState!.validate()) {
-                  // All fields are valid, proceed with form submission
-                }
+                formKey.currentState!.validate();
               },
-              child: const Text('Submit'),
+              label: 'Sign up',
             ),
           ],
         ),
