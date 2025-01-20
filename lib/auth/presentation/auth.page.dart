@@ -1,7 +1,12 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+// Project imports:
 import 'package:tech_task_clario/core/constants/colors.dart';
 import 'package:tech_task_clario/shared/widgets/buttons/primary_button.dart';
 import 'package:tech_task_clario/shared/widgets/dialogs/success_dialog.dart';

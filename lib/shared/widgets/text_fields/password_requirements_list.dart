@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:tech_task_clario/core/constants/colors.dart';
 import 'package:tech_task_clario/features/auth/domain/usecases/validate_password.dart';
 

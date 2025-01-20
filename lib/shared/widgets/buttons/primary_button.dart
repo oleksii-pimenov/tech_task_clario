@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:tech_task_clario/core/constants/colors.dart';
 
 class PrimaryButton extends StatelessWidget {

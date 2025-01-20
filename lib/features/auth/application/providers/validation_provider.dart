@@ -1,4 +1,7 @@
+// Package imports:
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+// Project imports:
 import 'package:tech_task_clario/features/auth/application/states/validation_state.dart';
 import 'package:tech_task_clario/features/auth/domain/usecases/validate_email.dart';
 import 'package:tech_task_clario/features/auth/domain/usecases/validate_password.dart';

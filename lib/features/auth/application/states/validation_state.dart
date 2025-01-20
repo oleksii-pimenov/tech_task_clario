@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/foundation.dart';
+
+// Project imports:
 import 'package:tech_task_clario/features/auth/domain/usecases/validate_password.dart';
 
 @immutable
