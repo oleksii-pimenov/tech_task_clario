@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:tech_task_clario/shared/theme/app_theme.dart';
 import 'package:tech_task_clario/shared/widgets/buttons/primary_button.dart';
 import 'package:tech_task_clario/shared/widgets/text_fields/app_text_form_field.dart';
 import 'package:tech_task_clario/shared/widgets/text_fields/password_text_form_field.dart';
@@ -65,8 +66,8 @@ class AuthPage extends HookConsumerWidget {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Color(0xFFF4F9FF),
-                  Color(0xFFE0EDFB),
+                  AppColors.gradientTop,
+                  AppColors.gradientBottom,
                 ],
               ),
             ),

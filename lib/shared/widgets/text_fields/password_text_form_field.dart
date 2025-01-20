@@ -1,21 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-
-const _errorColor = Color(0xFFFF8080);
-const _errorFontColor = _errorColor;
-const _errorBackgroundColor = Color(0xFFFDEFEE);
-const _focusedBorderColor = Color(0xFF151D51);
-const _focusedFontColor = Color.fromRGBO(21, 29, 81, 1);
-const _focusedBackgroundColor = Colors.white;
-const _enabledBorderColor = Color.fromRGBO(21, 29, 81, 0.2);
-const _enabledFontColor = Color.fromRGBO(21, 29, 81, 1);
-const _enabledBackgroundColor = Colors.white;
-const _disabledBorderColor = Color.fromRGBO(21, 29, 81, 0.2);
-const _disabledFontColor = Color.fromRGBO(21, 29, 81, 0.2);
-const _disabledBackgroundColor = Color.fromRGBO(21, 29, 81, 0.2);
-const _successBorderColor = Color.fromRGBO(39, 178, 116, 1);
-const _successFontColor = Color.fromRGBO(39, 178, 116, 1);
-const _successBackgroundColor = Color(0xFFEFFBF9);
+import 'package:tech_task_clario/shared/theme/app_theme.dart';
 
 class PasswordValidatorState {
   final bool isMinLengthValid;
@@ -143,28 +128,28 @@ class PasswordTextFormField extends HookWidget {
 
     Color getFillColor() {
       if (!enabled) {
-        return _disabledBackgroundColor;
+        return AppColors.textField.disabledBackground;
       }
       if (isValid) {
-        return _successBackgroundColor;
+        return AppColors.success.background;
       }
       if (hasBeenValidated.value && validatePassword(controller.text) != null) {
-        return _errorBackgroundColor;
+        return AppColors.error.background;
       }
-      return _enabledBackgroundColor;
+      return AppColors.textField.enabledBackground;
     }
 
     Color getTextColor() {
       if (!enabled) {
-        return _disabledFontColor;
+        return AppColors.textField.disabledFont;
       }
       if (isValid) {
-        return _successFontColor;
+        return AppColors.success.font;
       }
       if (hasBeenValidated.value && validatePassword(controller.text) != null) {
-        return _errorFontColor;
+        return AppColors.error.font;
       }
-      return _enabledFontColor;
+      return AppColors.textField.enabledFont;
     }
 
     useEffect(() {
@@ -220,40 +205,44 @@ class PasswordTextFormField extends HookWidget {
               ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(
-                  color: _enabledBorderColor,
+                borderSide: BorderSide(
+                  color: AppColors.textField.enabledBorder,
                 ),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide(
-                  color: isValid ? _successBorderColor : _enabledBorderColor,
+                  color: isValid
+                      ? AppColors.success.border
+                      : AppColors.textField.enabledBorder,
                 ),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide(
-                  color: isValid ? _successBorderColor : _focusedBorderColor,
+                  color: isValid
+                      ? AppColors.success.border
+                      : AppColors.textField.focusedBorder,
                   width: isValid ? 2 : 1,
                 ),
               ),
               errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(
-                  color: _errorColor,
+                borderSide: BorderSide(
+                  color: AppColors.error.border,
                 ),
               ),
               focusedErrorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(
-                  color: _errorColor,
+                borderSide: BorderSide(
+                  color: AppColors.error.border,
                   width: 2,
                 ),
               ),
               disabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(
-                  color: _disabledBorderColor,
+                borderSide: BorderSide(
+                  color: AppColors.textField.disabledBorder,
                 ),
               ),
               errorStyle: const TextStyle(
@@ -276,20 +265,20 @@ class PasswordTextFormField extends HookWidget {
                         text: 'Password must be at least 6 characters \n',
                         style: TextStyle(
                           color: passwordValidatorState.value.isMinLengthValid
-                              ? _successFontColor
+                              ? AppColors.green
                               : hasBeenValidated.value
-                                  ? _errorFontColor
-                                  : _enabledFontColor,
+                                  ? AppColors.error.font
+                                  : AppColors.textField.enabledFont,
                         ),
                       ),
                       TextSpan(
                         text: 'Password must be at most 64 characters \n',
                         style: TextStyle(
                           color: passwordValidatorState.value.isMaxLengthValid
-                              ? _successFontColor
+                              ? AppColors.green
                               : hasBeenValidated.value
-                                  ? _errorFontColor
-                                  : _enabledFontColor,
+                                  ? AppColors.error.font
+                                  : AppColors.textField.enabledFont,
                         ),
                       ),
                       TextSpan(
@@ -297,20 +286,20 @@ class PasswordTextFormField extends HookWidget {
                             'Password must contain at least 1 uppercase letter \n',
                         style: TextStyle(
                           color: passwordValidatorState.value.isUppercaseValid
-                              ? _successFontColor
+                              ? AppColors.green
                               : hasBeenValidated.value
-                                  ? _errorFontColor
-                                  : _enabledFontColor,
+                                  ? AppColors.error.font
+                                  : AppColors.textField.enabledFont,
                         ),
                       ),
                       TextSpan(
                         text: 'Password must contain at least 1 digit \n',
                         style: TextStyle(
                           color: passwordValidatorState.value.isDigitValid
-                              ? _successFontColor
+                              ? AppColors.success.font
                               : hasBeenValidated.value
-                                  ? _errorFontColor
-                                  : _enabledFontColor,
+                                  ? AppColors.error.font
+                                  : AppColors.textField.enabledFont,
                         ),
                       ),
                     ],

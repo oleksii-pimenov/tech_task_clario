@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tech_task_clario/shared/theme/app_theme.dart';
 
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton(
@@ -18,9 +19,9 @@ class PrimaryButton extends StatelessWidget {
           maxHeight: 48,
         ).tighten(width: 240),
         child: DecoratedBox(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Color(0xFF70C3FF), Color(0xFF4B65FF)],
+              colors: [AppColors.lightBlue, AppColors.darkBlue],
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
             ),
