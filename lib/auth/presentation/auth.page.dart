@@ -8,6 +8,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
 import 'package:tech_task_clario/core/constants/colors.dart';
+import 'package:tech_task_clario/features/auth/application/providers/validation_provider.dart';
 import 'package:tech_task_clario/shared/widgets/buttons/primary_button.dart';
 import 'package:tech_task_clario/shared/widgets/dialogs/success_dialog.dart';
 import 'package:tech_task_clario/shared/widgets/text_fields/app_text_form_field.dart';
@@ -26,10 +27,17 @@ class AuthPage extends HookConsumerWidget {
     void validateFields() {
       FocusScope.of(context).unfocus();
       emailController.text = emailController.text.trim();
+
+      // Validate both fields
       final isEmailValid = formKey.currentState!.validate();
       final isPasswordValid = formKey2.currentState!.validate();
 
-      if (isEmailValid && isPasswordValid) {
+      // Check both validation states from the provider
+      final validationState = ref.read(validationProvider);
+      final isFormValid =
+          validationState.isEmailValid && validationState.isPasswordValid;
+
+      if (isEmailValid && isPasswordValid && isFormValid) {
         showAdaptiveDialog(
           context: context,
           builder: (context) => SuccessDialog(
