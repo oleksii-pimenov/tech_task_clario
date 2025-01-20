@@ -27,7 +27,7 @@ class TextField {
   const TextField();
 
   final enabledBorder = const Color.fromRGBO(21, 29, 81, 0.2);
-  final enabledFont = const Color.fromRGBO(21, 29, 81, 1);
+  final enabledFont = const Color(0xFF4A4E71);
   final enabledBackground = AppColors.white;
 
   final disabledBorder = const Color.fromRGBO(21, 29, 81, 0.2);

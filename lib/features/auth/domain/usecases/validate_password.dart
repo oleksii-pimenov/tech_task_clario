@@ -15,6 +15,7 @@ class ValidatePassword {
   }
 
   String? _getErrorMessage(String password) {
+    // used as hack to keep form validation working
     if (password.isEmpty) return 'Password is required';
     if (password.length < 6) return 'Password must be at least 6 characters';
     if (password.length > 64) return 'Password must be at most 64 characters';

@@ -132,7 +132,10 @@ class AppTextFormField extends HookConsumerWidget {
                 color: AppColors.error.font,
               ),
               isDense: true,
-              contentPadding: const EdgeInsets.all(12),
+              contentPadding: const EdgeInsets.symmetric(
+                vertical: 12,
+                horizontal: 20,
+              ),
             ),
           ),
         ],
