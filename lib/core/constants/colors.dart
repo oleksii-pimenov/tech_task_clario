@@ -54,15 +54,3 @@ class Success {
   final font = AppColors.green;
   final background = AppColors.lightGreen;
 }
-
-class AppTheme {
-  static ThemeData get light => ThemeData(
-        textTheme: const TextTheme(
-          titleLarge: TextStyle(
-            fontSize: 28,
-            fontWeight: FontWeight.w700,
-            color: Color(0xFF4A4E71),
-          ),
-        ),
-      );
-}
