@@ -4,6 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tech_task_clario/core/constants/colors.dart';
 import 'package:tech_task_clario/shared/widgets/buttons/primary_button.dart';
+import 'package:tech_task_clario/shared/widgets/dialogs/success_dialog.dart';
 import 'package:tech_task_clario/shared/widgets/text_fields/app_text_form_field.dart';
 import 'package:tech_task_clario/shared/widgets/text_fields/password_text_form_field.dart';
 
@@ -26,18 +27,13 @@ class AuthPage extends HookConsumerWidget {
       if (isEmailValid && isPasswordValid) {
         showAdaptiveDialog(
           context: context,
-          builder: (context) => AlertDialog.adaptive(
-            title: const Text('Success'),
-            content: const Text('Sign up successful!'),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  FocusManager.instance.primaryFocus?.unfocus();
-                },
-                child: const Text('OK'),
-              ),
-            ],
+          builder: (context) => SuccessDialog(
+            title: 'Success',
+            content: 'Sign up successful!',
+            onDismiss: () {
+              // for resetting form
+              /*     resetForm(); */
+            },
           ),
         );
       }

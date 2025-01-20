@@ -32,4 +32,8 @@ class Validation extends _$Validation {
   void setSubmitted() {
     state = state.copyWith(hasBeenSubmitted: true);
   }
+
+  void reset() {
+    state = const ValidationState();
+  }
 }
