@@ -12,6 +12,7 @@ void main() {
   runApp(
     ProviderScope(
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: AppTheme.light,
         home: AuthPage(),
       ),
