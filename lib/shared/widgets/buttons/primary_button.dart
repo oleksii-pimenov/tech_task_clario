@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tech_task_clario/shared/theme/app_theme.dart';
+import 'package:tech_task_clario/core/constants/colors.dart';
 
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton(
