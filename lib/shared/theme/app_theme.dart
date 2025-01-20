@@ -6,6 +6,7 @@ class AppTheme {
           titleLarge: TextStyle(
             fontSize: 28,
             fontWeight: FontWeight.w700,
+            color: Color(0xFF4A4E71),
           ),
         ),
       );
