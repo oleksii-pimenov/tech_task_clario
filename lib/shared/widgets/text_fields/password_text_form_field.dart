@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tech_task_clario/core/constants/colors.dart';
 import 'package:tech_task_clario/features/auth/application/providers/validation_provider.dart';
+import 'package:tech_task_clario/shared/widgets/text_fields/password_requirements_list.dart';
 
 class PasswordTextFormField extends HookConsumerWidget {
   final TextEditingController controller;
@@ -94,7 +96,7 @@ class PasswordTextFormField extends HookConsumerWidget {
               ref
                   .read(validationProvider.notifier)
                   .validatePassword(value ?? '');
-              return validationState.passwordValidation?.errorMessage;
+              return null;
             },
             style: TextStyle(
               color: getTextColor(),
@@ -110,9 +112,12 @@ class PasswordTextFormField extends HookConsumerWidget {
                 onPressed: () {
                   isPasswordVisible.value = !isPasswordVisible.value;
                 },
-                icon: Icon(isPasswordVisible.value
-                    ? Icons.visibility
-                    : Icons.visibility_off),
+                icon: Icon(
+                  isPasswordVisible.value
+                      ? Icons.visibility
+                      : Icons.visibility_off,
+                  color: getTextColor(),
+                ),
               ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
@@ -154,71 +159,20 @@ class PasswordTextFormField extends HookConsumerWidget {
                   color: AppColors.textField.disabledBorder,
                 ),
               ),
-              errorStyle: const TextStyle(
-                fontSize: 1.0,
-                letterSpacing: 0.0,
-              ),
               isDense: true,
-              contentPadding: const EdgeInsets.all(12),
+              contentPadding: const EdgeInsets.symmetric(
+                vertical: 12,
+                horizontal: 20,
+              ),
             ),
           ),
-          if (validationState.hasBeenSubmitted || focusNode.hasFocus)
-            Padding(
-              padding: const EdgeInsets.only(left: 12),
-              child: Text.rich(
-                TextSpan(
-                  children: [
-                    TextSpan(
-                      text: 'Password must be at least 6 characters \n',
-                      style: TextStyle(
-                        color: validationState
-                                    .passwordValidation?.isMinLengthValid ??
-                                false
-                            ? AppColors.green
-                            : isValidated.value
-                                ? AppColors.error.font
-                                : AppColors.textField.enabledFont,
-                      ),
-                    ),
-                    TextSpan(
-                      text: 'Password must be at most 64 characters \n',
-                      style: TextStyle(
-                        color: validationState
-                                    .passwordValidation?.isMaxLengthValid ??
-                                false
-                            ? AppColors.green
-                            : isValidated.value
-                                ? AppColors.error.font
-                                : AppColors.textField.enabledFont,
-                      ),
-                    ),
-                    TextSpan(
-                      text:
-                          'Password must contain at least 1 uppercase letter \n',
-                      style: TextStyle(
-                        color:
-                            validationState.passwordValidation?.hasUppercase ??
-                                    false
-                                ? AppColors.green
-                                : isValidated.value
-                                    ? AppColors.error.font
-                                    : AppColors.textField.enabledFont,
-                      ),
-                    ),
-                    TextSpan(
-                      text: 'Password must contain at least 1 digit \n',
-                      style: TextStyle(
-                        color: validationState.passwordValidation?.hasDigit ??
-                                false
-                            ? AppColors.success.font
-                            : isValidated.value
-                                ? AppColors.error.font
-                                : AppColors.textField.enabledFont,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+          const Gap(20),
+          if (validationState.hasBeenSubmitted ||
+              focusNode.hasFocus ||
+              isValidated.value)
+            PasswordRequirementsList(
+              validation: validationState.passwordValidation,
+              isValidated: isValidated.value,
             ),
         ],
       ),
