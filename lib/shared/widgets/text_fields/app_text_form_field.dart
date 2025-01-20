@@ -89,6 +89,8 @@ class AppTextFormField extends HookConsumerWidget {
               hintText: hintText,
               hintStyle: TextStyle(
                 color: getTextColor(),
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
               ),
               filled: true,
               fillColor: getFillColor(),
